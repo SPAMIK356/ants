@@ -4,10 +4,10 @@ using UnityEngine;
 public class CellType : ScriptableObject
 {
     [SerializeField]
-    Color color;
+    public Color color;
     [SerializeField]
-    bool isPasable;
+    public bool isPasable;
     [SerializeField]
-    float food;
+    public float food;
 
 }
