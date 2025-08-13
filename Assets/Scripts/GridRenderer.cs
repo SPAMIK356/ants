@@ -10,12 +10,13 @@ public class GridRenderer
     Color[] colors;
     float[] normalised;
     public bool renderingEnabled { get; private set;} = true;
-    public GridRenderer(int resX, int resY, Renderer renderer)
+    public GridRenderer(int resX, int resY, Renderer renderer, FilterMode filterMode = FilterMode.Point)
     {
         normalised = new float[resX * resY];
         this.renderer = renderer;
         x = resX; y = resY;
         texture = new Texture2D(resX, resY);
+        texture.filterMode = filterMode;
         this.renderer.material.mainTexture = texture;
         colors = new Color[x * y];
     }
