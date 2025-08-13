@@ -6,7 +6,10 @@ public class RenderingManager : MonoBehaviour
     [SerializeField] Renderer map;
     [SerializeField] Renderer pheromoneMap;
     GridRenderer gridRenderer;
+
     GridRenderer pheromoneRenderer;
+    [Range(0.0f, 1.0f)] [SerializeField] float pheromoneLayerAlpha = 0.2f;
+
     SimulationManager simulationManager;
 
     float[] pheromones;
@@ -28,14 +31,14 @@ public class RenderingManager : MonoBehaviour
         int i = 0;
         foreach(var c in simulationManager.grid.cells)
         {
-            pheromones[i] = c.foodPheromone;
+            pheromones[i++] = c.foodPheromone;
         }
 
         if(Input.GetKeyDown(KeyCode.LeftAlt)) gridRenderer.SetRendering(!gridRenderer.renderingEnabled);
         if(Input.GetKeyDown(KeyCode.RightAlt)) pheromoneRenderer.SetRendering(!pheromoneRenderer.renderingEnabled);
 
         gridRenderer.Render(simulationManager.grid.cells);
-        pheromoneRenderer.Render(pheromones,0);
+        pheromoneRenderer.Render(pheromones,0,alpha:pheromoneLayerAlpha);
     }
 
     private void MapUpdated()

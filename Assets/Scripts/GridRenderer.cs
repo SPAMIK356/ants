@@ -20,6 +20,7 @@ public class GridRenderer
         this.renderer.material.mainTexture = texture;
         colors = new Color[x * y];
         renderingEnabled = enableRendering;
+        renderer.enabled = renderingEnabled;
     }
     public void SetRendering(bool state)
     {
@@ -58,11 +59,9 @@ public class GridRenderer
             }
         else
         {
-            int i = 0;
-            foreach (var value in values)
-            {
-                normalised[i++] = value;
-            }
+
+            normalised = values;
+            
         }
 
         switch (channel)
