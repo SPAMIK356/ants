@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Cell : MonoBehaviour
+public class Cell
 {
     public Color color;
     public bool hasAnt;
