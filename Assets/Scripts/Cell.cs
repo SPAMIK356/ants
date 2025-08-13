@@ -8,11 +8,18 @@ public class Cell
     public float food;
     public float foodPheromone;
     public float homePheromone;
-
+    public CellFlag cellFlag;
     public Cell(CellType cellType)
     {
         color = cellType.color;
         isPasable = cellType.isPasable;
         food = cellType.food;
     }
+}
+
+public enum CellFlag
+{
+    Regular,
+    Nest,
+    FoodSource
 }
