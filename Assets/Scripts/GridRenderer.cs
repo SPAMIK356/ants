@@ -36,7 +36,7 @@ public class GridRenderer
         texture.SetPixels(colors);
         texture.Apply();
     }
-    public void Render(float[,] values, int channel, float max = 1, float min = 0)
+    public void Render(float[] values, int channel, float max = 1, float min = 0, float alpha = 1)
     {
         if(!renderingEnabled) return; 
         if(max!=1 ||  min!=0)
@@ -73,6 +73,8 @@ public class GridRenderer
                     colors[i].r = normalised[i];
                     colors[i].g = 0;
                     colors[i].b = 0;
+                    colors[i].a = alpha;
+
                 }
 
                 break;
@@ -82,6 +84,8 @@ public class GridRenderer
                     colors[i].r = 0; 
                     colors[i].g = normalised[i];
                     colors[i].b = 0;
+                    colors[i].a = alpha;
+
                 }
                 break;
             case 2:
@@ -90,6 +94,8 @@ public class GridRenderer
                     colors[i].r = 0;
                     colors[i].g = 0;
                     colors[i].b = normalised[i];
+                    colors[i].a = alpha;
+
                 }
                 break;
             default:

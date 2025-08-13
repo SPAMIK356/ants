@@ -1,11 +1,15 @@
 using UnityEngine;
-
+using System.Linq;
 public class RenderingManager : MonoBehaviour
 {
     public static RenderingManager Instance;
     [SerializeField] Renderer map;
+    [SerializeField] Renderer pheromoneMap;
     GridRenderer gridRenderer;
+    GridRenderer pheromoneRenderer;
     SimulationManager simulationManager;
+
+    float[] pheromones;
     private void Awake()
     {
         if (Instance != null) Destroy(this);
@@ -15,13 +19,23 @@ public class RenderingManager : MonoBehaviour
     {
         simulationManager = SimulationManager.Instance;
         gridRenderer = new(simulationManager.x, simulationManager.y,map);
+        pheromoneRenderer = new(simulationManager.x,simulationManager.y,pheromoneMap,enableRendering:false);
         simulationManager.MapUpdate += MapUpdated;
+        pheromones = new float[simulationManager.x*simulationManager.y];
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftAlt)) gridRenderer.SetRendering(!gridRenderer.renderingEnabled);
+        int i = 0;
+        foreach(var c in simulationManager.grid.cells)
+        {
+            pheromones[i] = c.foodPheromone;
+        }
 
-        if (gridRenderer.renderingEnabled) gridRenderer.Render(simulationManager.grid.cells);
+        if(Input.GetKeyDown(KeyCode.LeftAlt)) gridRenderer.SetRendering(!gridRenderer.renderingEnabled);
+        if(Input.GetKeyDown(KeyCode.RightAlt)) pheromoneRenderer.SetRendering(!pheromoneRenderer.renderingEnabled);
+
+        gridRenderer.Render(simulationManager.grid.cells);
+        pheromoneRenderer.Render(pheromones,0);
     }
 
     private void MapUpdated()
