@@ -9,6 +9,7 @@ public class GridRenderer
     int x, y;
     Color[] colors;
     float[] normalised;
+    public bool renderingEnabled { get; private set;} = true;
     public GridRenderer(int resX, int resY, Renderer renderer)
     {
         normalised = new float[resX * resY];
@@ -20,7 +21,8 @@ public class GridRenderer
     }
     public void SetRendering(bool state)
     {
-        renderer.enabled = state;
+        renderingEnabled = state;
+        renderer.enabled = renderingEnabled;
     }
     public void Render(Cell[,] cells)
     {
