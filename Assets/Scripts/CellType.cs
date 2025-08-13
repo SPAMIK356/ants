@@ -9,5 +9,7 @@ public class CellType : ScriptableObject
     public bool isPasable;
     [SerializeField]
     public float food;
+    [SerializeField]
+    public CellFlag cellFlag;
 
 }
