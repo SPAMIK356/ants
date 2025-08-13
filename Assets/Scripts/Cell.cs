@@ -14,6 +14,7 @@ public class Cell
         color = cellType.color;
         isPasable = cellType.isPasable;
         food = cellType.food;
+        cellFlag = cellType.cellFlag;
     }
 }
 
