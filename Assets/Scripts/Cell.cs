@@ -22,7 +22,7 @@ public class Cell
 
     public WorldView CellToWorldView()
     {
-        return new WorldView(x,y,isPasable,foodPheromone,homePheromone,cellFlag);
+        return new WorldView(x,y,isPasable,foodPheromone,homePheromone,cellFlag,food);
     }
 }
 
