@@ -15,7 +15,7 @@ public class Grid
         {
             for (int j = 0; j < cells.GetLength(1); j++)
             {
-                cells[i, j] = new Cell(pool[Random.Range(0,pool.Length)]);
+                cells[i, j] = new Cell(pool[Random.Range(0,pool.Length)],i,j);
             }
         }
     }
