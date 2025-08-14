@@ -13,6 +13,6 @@ public class Ant
     float foodPheromone = 0;
     float foodAmount = 0;
     float maxFood;
-    Color color;
+    public Color color;
     
 }
