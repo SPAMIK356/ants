@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IAction
 {
-    public void DoAction(Intent intent, Cell targetCell);
+    public void DoAction(Intent intent, Cell targetCell, Cell startCell);
 }
