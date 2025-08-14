@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public readonly struct WorldView
 {
     public readonly int x, y;
