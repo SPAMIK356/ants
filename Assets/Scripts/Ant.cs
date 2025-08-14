@@ -7,7 +7,7 @@ public class Ant
     public float foodPheromone = 0;
     public float homePheromone = 0;
     float foodAmount = 0;
-    float maxFood;
+    public float maxFood { get; private set; }
     public Color color;
     public int x, y;
     public Ant(AntTemplate template, int x, int y)
