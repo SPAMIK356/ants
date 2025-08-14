@@ -39,6 +39,21 @@ public class Cell
         hasAnt = true;
         color = ant.color;
     }
+    public float GetFood(float maxFood)
+    {
+        if(cellFlag != CellFlag.FoodSource)
+        {
+            Debug.LogWarning($"Trying to get food from non-source! Cords are {x} {y}");
+            return 0;
+        }
+        float getAmount = Mathf.Clamp(maxFood, 0, food);
+        food-= getAmount;
+        if(food <= 0)
+        {
+            cellFlag = CellFlag.Regular;
+        }
+        return getAmount;
+    }
     public WorldView CellToWorldView()
     {
         return new WorldView(x,y,isPasable,foodPheromone,homePheromone,cellFlag,food);
