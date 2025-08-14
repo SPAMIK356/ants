@@ -54,6 +54,15 @@ public class Cell
         }
         return getAmount;
     }
+    public void PutFood(float amount)
+    {
+        if (cellFlag == CellFlag.Nest)
+        {
+            Debug.LogWarning($"Trying to put food into non-nest cell on cords {x} {y}!");
+            return;
+        }
+        food += amount;
+    }
     public WorldView CellToWorldView()
     {
         return new WorldView(x,y,isPasable,foodPheromone,homePheromone,cellFlag,food);
