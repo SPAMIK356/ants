@@ -69,31 +69,23 @@ public class GridRenderer
             case 0:
                 for(int i = 0; i < colors.Length; i++)
                 {
-                    colors[i].r = normalised[i];
-                    colors[i].g = 0;
-                    colors[i].b = 0;
-                    colors[i].a = alpha;
-
+                    colors[i] =  new Color(normalised[i],0,0,alpha);
                 }
 
                 break;
             case 1:
                 for (int i = 0; i < colors.Length; i++)
                 {
-                    colors[i].r = 0; 
-                    colors[i].g = normalised[i];
-                    colors[i].b = 0;
-                    colors[i].a = alpha;
+                    colors[i] = new Color(0,normalised[i], 0, alpha);
+
 
                 }
                 break;
             case 2:
                 for (int i = 0; i < colors.Length; i++)
                 {
-                    colors[i].r = 0;
-                    colors[i].g = 0;
-                    colors[i].b = normalised[i];
-                    colors[i].a = alpha;
+                    colors[i] = new Color(0,0,normalised[i], alpha);
+
 
                 }
                 break;
