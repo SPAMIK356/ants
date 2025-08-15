@@ -11,6 +11,7 @@ public class Ant
     public float maxFood { get; private set; }
     public Color color;
     public int x, y;
+    private IDecide brain;
     public Ant(AntTemplate template, int x, int y)
     {
         color = template.color;
@@ -19,6 +20,11 @@ public class Ant
         this.x = x;
         this.y = y;
     }
+    public Intent Decide(WorldView[] worldView)
+    {
+        return brain.Decide(worldView, this);
+    }
+
     public float GetFood(float sourceFoodAmount)
     {
         if (sourceFoodAmount <= 0) 
