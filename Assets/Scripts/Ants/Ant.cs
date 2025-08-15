@@ -44,11 +44,16 @@ public class Ant
         return givenFood;
     }
 
-    public (float homePheromones, float foodPheromones) DropPheromones(float factor)
+    public float DropHomePheromones(float factor)
     {
-        var pheromones = (homePheromone*factor, foodPheromone *factor);
-        homePheromone -= pheromones.Item1;
-        foodPheromone -= pheromones.Item2;
+        var pheromones = homePheromone*factor;
+        homePheromone -= pheromones;
+        return pheromones;
+    }
+    public float DropFoodPheromones(float factor)
+    {
+        var pheromones = foodPheromone * factor;
+        foodPheromone -= pheromones;
         return pheromones;
     }
 }
