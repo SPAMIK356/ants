@@ -10,7 +10,7 @@ public class Move : IAction
         }
         else
         {
-            startCell.homePheromone += intent.ant.DropFoodPheromones();
+            startCell.homePheromone += intent.ant.DropHomePheromones();
         }
             startCell.RemoveAnt();
         targetCell.SetAnt(intent.ant);
