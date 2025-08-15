@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//TODO: Доробити логіку повернення їжі
 public class RegularAntDecide : IDecide
 {
     public Intent Decide(WorldView[] worldViews, Ant ant) 
@@ -9,25 +9,40 @@ public class RegularAntDecide : IDecide
 
         float weightSum = 0;
         if (ant.hasFood)
+        {
+
             for (int i = 0; i < worldViews.Length; i++)
             {
-                //Логіка повернення їжі
+                if (worldViews[i].cellType == CellFlag.Nest) //Якщо є гніздо
+                {
+                    return new Intent(worldViews[i].x, worldViews[i].y, ant, new PutFood()); //Покласти їжу
+                }
+                if (!worldViews[i].isPasable)  //Якщо клітина непроходима
+                {
+                    weights[i] = 0;     //Вага нуль
+                    continue;
+                }
+                weights[i] = 1 + worldViews[i].homePheromone;
+                weightSum += weights[i];
             }
+        }
         else
-            for(int i = 0; i < worldViews.Length; i++)
+        {
+            for (int i = 0; i < worldViews.Length; i++)
             {
                 if (worldViews[i].cellType == CellFlag.FoodSource) //Якщо є джерело їжі
                 {
                     return new Intent(worldViews[i].x, worldViews[i].y, ant, new GetFood()); //Взяти їжу
                 }
                 if (!worldViews[i].isPasable)  //Якщо клітина непроходима
-                { 
+                {
                     weights[i] = 0;     //Вага нуль
                     continue;
                 }
-                weights[i] = 1+worldViews[i].foodPheromone;
+                weights[i] = 1 + worldViews[i].foodPheromone;
                 weightSum += weights[i];
             }
+        }
         float choice = Random.Range(0, weightSum);
         float num = 0;
         for (int i = 0; i < worldViews.Length; i++) 
