@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Ant
 {
+    private float pheromoneDropRate = 0.1f;
     public bool hasFood { get; private set; } = false;
   
     public float foodPheromone = 0;
@@ -44,15 +45,15 @@ public class Ant
         return givenFood;
     }
 
-    public float DropHomePheromones(float factor)
+    public float DropHomePheromones()
     {
-        var pheromones = homePheromone*factor;
+        var pheromones = homePheromone*pheromoneDropRate;
         homePheromone -= pheromones;
         return pheromones;
     }
-    public float DropFoodPheromones(float factor)
+    public float DropFoodPheromones()
     {
-        var pheromones = foodPheromone * factor;
+        var pheromones = foodPheromone * pheromoneDropRate;
         foodPheromone -= pheromones;
         return pheromones;
     }
