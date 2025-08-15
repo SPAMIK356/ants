@@ -12,6 +12,7 @@ public class Cell
     public float homePheromone;
     public CellFlag cellFlag;
     public Ant ant;
+    public float pheromoneFadeFactor = 0.9f;
     public Cell(CellType cellType, int x, int y)
     {
         color = cellType.color;
@@ -21,6 +22,11 @@ public class Cell
         cellFlag = cellType.cellFlag;
         this.x = x;
         this.y = y;
+    }
+    public void Update()
+    {
+        foodPheromone*=pheromoneFadeFactor;
+        homePheromone *=pheromoneFadeFactor;
     }
     public void RemoveAnt()
     {
