@@ -11,11 +11,28 @@ public class Grid
         this.x = x;
         this.y = y;
         cells = new Cell[x, y];
+
+        float weightSum = 0;
+        foreach (CellType cellType in pool) 
+        {
+            weightSum += cellType.weight;
+        }
+            
         for (int i = 0; i < cells.GetLength(0); i++)
         {
             for (int j = 0; j < cells.GetLength(1); j++)
             {
-                cells[i, j] = new Cell(pool[Random.Range(0,pool.Length)],i,j);
+                float choise = Random.Range(0.0f, weightSum);
+                float sum = 0.0f;
+                foreach (CellType cellType in pool)
+                {
+                    sum += cellType.weight;
+                    if (sum > choise)
+                    {
+                        cells[i, j] = new Cell(cellType, i, j);
+                        break;
+                    }
+                }
             }
         }
     }
