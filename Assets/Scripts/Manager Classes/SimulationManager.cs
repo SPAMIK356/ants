@@ -46,7 +46,6 @@ public class SimulationManager : MonoBehaviour
                 }
                 
                 intents.Add(cell.ant.Decide(worldViews.ToArray()));
-                //intent.action.DoAction(intent, grid.cells[intent.x,intent.y], cell);
             }
         }
         foreach (Intent intent in intents) 
