@@ -17,6 +17,7 @@ public class Ant
         color = template.color;
         maxFood = template.maxFood;
         pheromoneDropRate = template.pheromoneDropRate;
+        brain = template.brain;
         this.x = x;
         this.y = y;
     }
