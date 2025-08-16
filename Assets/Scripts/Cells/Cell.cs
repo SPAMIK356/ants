@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Cell
 {
+    private bool initIsPasable;
     public int x, y;
     private Color baseColor;
     public Color color;
@@ -18,6 +19,8 @@ public class Cell
         color = cellType.color;
         baseColor = cellType.color;
         isPasable = cellType.isPasable;
+        initIsPasable = cellType.isPasable;
+
         food = cellType.food;
         cellFlag = cellType.cellFlag;
         this.x = x;
@@ -32,6 +35,7 @@ public class Cell
     {
         ant = null;
         hasAnt = false;
+        isPasable = initIsPasable;
         color = baseColor;
     }
     public void SetAnt(Ant ant)
@@ -43,6 +47,7 @@ public class Cell
         }
         this.ant = ant;
         hasAnt = true;
+        isPasable = false;
         color = ant.color;
     }
     public float GetFood(float maxFood)

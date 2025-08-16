@@ -11,6 +11,7 @@ public class SimulationManager : MonoBehaviour
     public Action MapUpdate;
     public List<Ant> ants;
     [SerializeField] AntTemplate template;
+    [SerializeField] int antAmount = 50;
     private void Awake()
     {
         ants = new List<Ant>();
@@ -19,8 +20,14 @@ public class SimulationManager : MonoBehaviour
         Instance = this;
 
         grid = new(x, y, pool);
-        ants.Add(new Ant(template, 0, 0));
-        grid.cells[0,0].SetAnt(ants[0]);
+        int sqrt = (int)Mathf.Sqrt(antAmount);
+        for (int i = 0; i < antAmount; i++)
+        {
+            int ax = i%sqrt;
+            int ay = i/sqrt;
+            ants.Add(new Ant(template, 0, 0));
+            grid.cells[ax,ay].SetAnt(ants[i]);
+        }
     }
     private void Update()
     {

@@ -34,6 +34,7 @@ public class RegularAntDecide : IDecide
                 {
                     return new Intent(worldViews[i].x, worldViews[i].y, ant, new GetFood()); //¬з€ти њжу
                 }
+                if (worldViews[i].cellType == CellFlag.Nest) ant.homePheromone = 1; //Remove magic number!!!!!
                 if (!worldViews[i].isPasable)  //якщо кл≥тина непроходима
                 {
                     weights[i] = 0;     //¬ага нуль
