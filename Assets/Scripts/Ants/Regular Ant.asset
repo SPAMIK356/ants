@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b54533b84aa33458e17c92059b841f, type: 3}
   m_Name: Regular Ant
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  maxFood: 0
+  color: {r: 0, g: 0.032014847, b: 1, a: 0}
+  maxFood: 1
   pheromoneDropRate: 0.1
+  brain: {fileID: 11400000, guid: c98a736c75946114f831caa99e34ec17, type: 2}

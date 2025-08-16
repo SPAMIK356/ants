@@ -62,7 +62,7 @@ public class Cell
     }
     public void PutFood(float amount)
     {
-        if (cellFlag == CellFlag.Nest)
+        if (cellFlag != CellFlag.Nest)
         {
             Debug.LogWarning($"Trying to put food into non-nest cell on cords {x} {y}!");
             return;

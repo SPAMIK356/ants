@@ -18,6 +18,7 @@ public class Ant
         maxFood = template.maxFood;
         pheromoneDropRate = template.pheromoneDropRate;
         brain = template.brain;
+
         this.x = x;
         this.y = y;
     }
@@ -57,12 +58,16 @@ public class Ant
     {
         var pheromones = homePheromone*pheromoneDropRate;
         homePheromone -= pheromones;
+        Debug.Log($"Dropped home pheromones in amount of {pheromones}");
+
         return pheromones;
     }
     public float DropFoodPheromones()
     {
         var pheromones = foodPheromone * pheromoneDropRate;
         foodPheromone -= pheromones;
+        Debug.Log($"Dropped food pheromones in amount of {pheromones}");
+
         return pheromones;
     }
 }
