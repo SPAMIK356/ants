@@ -25,7 +25,7 @@ public class SimulationManager : MonoBehaviour
         {
             int ax = i%sqrt;
             int ay = i/sqrt;
-            ants.Add(new Ant(template, 0, 0));
+            ants.Add(new Ant(template, ax, ay));
             grid.cells[ax,ay].SetAnt(ants[i]);
         }
     }
@@ -57,6 +57,12 @@ public class SimulationManager : MonoBehaviour
         }
         foreach (Intent intent in intents) 
         {
+            if(grid.cells[intent.x, intent.y].hasAnt && grid.cells[intent.x, intent.y].ant != intent.ant)
+            {
+                var nIntent = new Intent(intent.ant.x, intent.ant.y, intent.ant, new Idle());
+                nIntent.action.DoAction(nIntent, grid.cells[nIntent.x, nIntent.y], grid.cells[nIntent.x, nIntent.y]);
+                continue;
+            }
             intent.action.DoAction(intent, grid.cells[intent.x, intent.y], grid.cells[intent.ant.x, intent.ant.y]);
         }
     }
