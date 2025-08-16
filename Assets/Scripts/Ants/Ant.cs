@@ -60,7 +60,6 @@ public class Ant
     {
         var pheromones = homePheromone*pheromoneDropRate;
         homePheromone -= pheromones;
-        Debug.Log($"Dropped home pheromones in amount of {pheromones}");
 
         return pheromones;
     }
@@ -68,7 +67,6 @@ public class Ant
     {
         var pheromones = foodPheromone * pheromoneDropRate;
         foodPheromone -= pheromones;
-        Debug.Log($"Dropped food pheromones in amount of {pheromones}");
 
         return pheromones;
     }
