@@ -52,8 +52,11 @@ public class Cell
             Debug.LogWarning($"Trying to get food from non-source! Cords are {x} {y}");
             return 0;
         }
+
         float getAmount = Mathf.Clamp(maxFood, 0, food);
-        food-= getAmount;
+        Debug.Log($"Got food in the cell in amount of {getAmount}");
+
+        food -= getAmount;
         if(food <= 0)
         {
             cellFlag = CellFlag.Regular;
@@ -62,11 +65,14 @@ public class Cell
     }
     public void PutFood(float amount)
     {
+
         if (cellFlag != CellFlag.Nest)
         {
             Debug.LogWarning($"Trying to put food into non-nest cell on cords {x} {y}!");
             return;
         }
+        Debug.Log($"Putted food in the cell in amount of {amount}");
+
         food += amount;
     }
     public WorldView CellToWorldView()
