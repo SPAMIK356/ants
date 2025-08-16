@@ -1,8 +1,8 @@
 using UnityEngine;
-//TODO: Доробити логіку повернення їжі
+[CreateAssetMenu(fileName = "RegularAntLogic", menuName = "Scriptable Objects/Ant Behaviours/RegularAnt")]
 public class RegularAntDecide : IDecide
 {
-    public Intent Decide(WorldView[] worldViews, Ant ant) 
+    public override Intent Decide(WorldView[] worldViews, Ant ant) 
     {
 
         float[] weights = new float[worldViews.Length];

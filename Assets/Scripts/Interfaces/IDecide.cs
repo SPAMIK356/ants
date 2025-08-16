@@ -1,4 +1,6 @@
-public interface IDecide
+using UnityEngine;
+
+public abstract class IDecide : ScriptableObject
 {
-    public Intent Decide(WorldView[] worldViews, Ant ant);
+    public abstract Intent Decide(WorldView[] worldViews, Ant ant);
 }
