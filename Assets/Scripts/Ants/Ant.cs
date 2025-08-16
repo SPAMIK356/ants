@@ -6,7 +6,7 @@ public class Ant
     public bool hasFood { get; private set; } = false;
   
     public float foodPheromone = 0;
-    public float homePheromone = 0;
+    public float homePheromone = 1.0f;
     float foodAmount = 0;
     public float maxFood { get; private set; }
     public Color color;
@@ -50,6 +50,8 @@ public class Ant
 
         var givenFood = foodAmount;
         foodAmount = 0;
+        foodPheromone = 0;
+        homePheromone = 1;
         hasFood = false;
         return givenFood;
     }
